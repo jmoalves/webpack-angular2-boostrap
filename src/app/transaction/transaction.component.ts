@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Transaction } from '../domain/transaction';
 
 @Component({
   selector: 'my-transaction',

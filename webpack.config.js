@@ -9,6 +9,7 @@ module.exports = function() {
             polyfills: './src/polyfills.ts',
             app: './src/app/main.ts'
         },
+
         // Enable sourcemaps for debugging webpack's output.
         devtool: "source-map",
 
@@ -49,19 +50,15 @@ module.exports = function() {
             }),
 
             new webpack.optimize.CommonsChunkPlugin({
-                name: 'polyfills'
-            }),
-
-            new webpack.optimize.CommonsChunkPlugin({
-                name: 'vendor',
+                name: ["app", "polyfills", "vendor"],
                 minChunks: function(module) {
-                    // this assumes your vendor imports exist in the node_modules directory
-                    return module.context && module.context.indexOf('node_modules') !== -1;
+                    return module.context && module.context.indexOf("node_modules") !== -1;
                 }
             }),
 
             new webpack.optimize.CommonsChunkPlugin({
-                name: 'manifest'
+                name: "manifest",
+                minChunks: Infinity
             }),
 
             new HtmlWebpackPlugin({

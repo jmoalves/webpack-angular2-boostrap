@@ -5,6 +5,10 @@ var CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = function() {
     return {
+        devServer: {
+            historyApiFallback: true
+        },
+
         entry: {
             polyfills: './src/polyfills.ts',
             app: './src/app/main.ts'
